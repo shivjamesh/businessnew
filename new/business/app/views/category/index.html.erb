@@ -1,2 +1,5 @@
-<% Category.all.each do |category|
-  
+<h3> Welcome to Business Listing </h3><br/><br/>
+
+<% Category.all.each do |category| %>
+<%= link_to category.name, businessforms_path(category: category.name) %><br/><br/>
+<% end %>

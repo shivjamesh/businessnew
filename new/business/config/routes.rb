@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'businessforms/show'
-  root 'businessforms#index'
+  root 'category#index'
 
 
   devise_for :users

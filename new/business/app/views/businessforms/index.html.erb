@@ -17,6 +17,10 @@
   <%= link_to " ", businessform_path(businessform) %>
     <% end %>
 
+    <%= category.name if @businessform.present? %>
+
   <br/><hr><hr>
 
   <% end %>
+
+  <%= will_paginate @businessforms %>
