@@ -11,8 +11,11 @@
   Description: <%= businessform.description %><br/><br/>
   City: <%= businessform.city %><br/><br/>
 
-
-  <%= link_to "Delete information", businessform_path(businessform), :date => {:confirm => "Are your sure ?"}, :method => :delete %>
+  <%- if user_signed_in? %>
+    <%= link_to "Delete information", businessform_path(businessform), :date => {:confirm => "Are your sure ?"}, :method => :delete %>
+  <% else %>
+  <%= link_to " ", businessform_path(businessform) %>
+    <% end %>
 
   <br/><hr><hr>
 
