@@ -1,19 +1,21 @@
 
 <% @businessforms.each do |businessform| %>
-  Name: <%= businessform.name %><br/><br/>
-  Street: <%= businessform.street %><br/><br/>
-  State: <%= businessform.state %><br/><br/>
-  Postcode: <%= businessform.postcode %><br/><br/>
-  Website: <%= businessform.website %><br/><br/>
-  Country: <%= businessform.country %><br/><br/>
-  Phone: <%= businessform.phone %><br/><br/>
-  Category: <%= businessform.category %><br/><br/>
-  Description: <%= businessform.description %><br/><br/>
-  City: <%= businessform.city %><br/><br/>
+Name: <%= businessform.name %><br/><br/>
+Street: <%= businessform.street %><br/><br/>
+State: <%= businessform.state %><br/><br/>
+Postcode: <%= businessform.postcode %><br/><br/>
+Website: <%= businessform.website %><br/><br/>
+Country: <%= businessform.country %><br/><br/>
+City: <%= businessform.city %><br/><br/>
+Phone: <%= businessform.phone %><br/><br/>
+Category: <%= businessform.category.name if businessform.category %><br/><br/>
+Description: <%= businessform.description %><br/><br/>
+
 
   <%= link_to "Delete information", businessform_path(businessform), :date => {:confirm => "Are your sure ?"}, :method => :delete %>
 
   <br/><hr><hr>
+
 
   <% end %>
 

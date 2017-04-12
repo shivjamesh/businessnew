@@ -8,8 +8,9 @@
   Country: <%= businessform.country %><br/><br/>
   City: <%= businessform.city %><br/><br/>
   Phone: <%= businessform.phone %><br/><br/>
-  Category: <%= businessform.category %><br/><br/>
+  Category: <%= businessform.category.name if businessform.category %><br/><br/>
   Description: <%= businessform.description %><br/><br/>
+
 
   <%- if user_signed_in? %>
     <%= link_to "Delete information", businessform_path(businessform), :date => {:confirm => "Are your sure ?"}, :method => :delete %>
@@ -17,9 +18,10 @@
   <%= link_to " ", businessform_path(businessform) %>
     <% end %>
 
-    <%= category.name if @businessform.present? %>
 
   <br/><hr><hr>
+
+
 
   <% end %>
 

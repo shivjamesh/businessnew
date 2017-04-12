@@ -4,8 +4,9 @@ class CategoryController < ApplicationController
     @category = Category.all
   end
 
-  def new
-    @category = Category.new
+  def show
+    @category = Category.find(params[:id])
+    @businessform = @category.name
   end
 
   private
