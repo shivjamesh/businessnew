@@ -5,6 +5,11 @@ class BusinessformsController < ApplicationController
   def index
     if params[:category].blank?
       @businessforms = Businessform.all.paginate(page: params[:page], per_page: 5)
+      respond_to do |format|
+      format.html
+      format.xml { render :xml => @businessforms }
+      format.json { render :json => @businessforms }
+    end
     else
       @category_id = Category.find_by(name: params[:category]).id
       @businessforms = Businessform.where(category_id: @category_id).paginate(page: params[:page], per_page: 5)
