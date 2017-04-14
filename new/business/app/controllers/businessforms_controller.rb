@@ -3,22 +3,27 @@ class BusinessformsController < ApplicationController
   before_action :current_user, only: :destroy
 
   def index
+      page_info = {
+      page:params[:page] || 1,
+      per_page:params[:per_page] || 5
+    }
+
     if params[:category].blank?
-      @businessforms = Businessform.all.paginate(page: params[:page], per_page: 5)
+      @businessforms = Businessform.all.page(page_info[:page]).per(page_info[:per_page])
       respond_to do |format|
-      format.html
+      format.html { @businessforms = @businessforms }
       format.xml { render :xml => @businessforms }
-      format.json { render :json => @businessforms }
+      format.json { render json: @businessforms }
     end
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @businessforms = Businessform.where(category_id: @category_id).paginate(page: params[:page], per_page: 5)
+      @businessforms = Businessform.where(category_id: @category_id).page(params[:page]).per(5)
     end
   end
 
 
   def show
-    @businessforms = current_user.businessforms.all.paginate(page: params[:page], per_page: 5)
+    @businessforms = current_user.businessforms.all.page(params[:page]).per(5)
   end
 
   def new
