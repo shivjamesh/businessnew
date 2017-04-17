@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  belongs_to :businessforms
+  has_many :businessforms
 end
