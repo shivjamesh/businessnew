@@ -1,6 +1,8 @@
 class BusinessformsController < ApplicationController
-  before_action :current_user, only: [:create, :edit, :update, :destroy]
-  before_action :current_user, only: :destroy
+  before_action :authenticate_user, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user, only: :destroy
+
+  before_action :authenticate_user!
 
   def index
       page_info = {
@@ -30,6 +32,7 @@ class BusinessformsController < ApplicationController
     @businessform = current_user.businessforms.build
     #@businessform = Businessform.new
   end
+
 
   def create
         @businessform = current_user.businessforms.build(businessform_params)
